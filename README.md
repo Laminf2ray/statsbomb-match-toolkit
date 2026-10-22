@@ -9,14 +9,14 @@ A reproducible Python and SQL pipeline for football event data, with automated m
 | Stage | Status | Output |
 |---|---|---|
 | 1. Pipeline: download, clean and load event data into DuckDB, then check it | ✅ Done | `data/football.duckdb` |
-| 2. Automated post-match report: shot map, xG timeline, pass network, field tilt | ⏳ Next | `outputs/reports/` |
+| 2. Automated post-match report: shot map, xG timeline, pass networks, key stats | ✅ Done | `outputs/reports/` |
 | 3. Team style profiles: pressing, possession, chance quality | ⏳ Planned | `notebooks/` |
 | 4. Ad-hoc analysis questions, written up | ⏳ Planned | `docs/` |
 
 ## Quick start
 
 ```bash
-git clone https://github.com/<your-username>/statsbomb-match-toolkit.git
+git clone https://github.com/Laminf2ray/statsbomb-match-toolkit.git
 cd statsbomb-match-toolkit
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
@@ -24,9 +24,29 @@ pip install -r requirements.txt
 
 python src/pipeline.py             # all Euro 2024 matches, about 2 minutes on first run
 python src/pipeline.py --limit 5   # quick test
+
+python src/match_report.py --list            # match IDs
+python src/match_report.py                   # report for the most recent match (the final)
+python src/match_report.py --match 3943043   # a specific match
+python src/match_report.py --all             # all 51 matches, about 1.5 minutes
 ```
 
 Downloads are cached in `data/raw/`, so later runs take seconds. To load another competition, find its IDs with `statsbombpy.sb.competitions()` and pass them in, for example `--competition 43 --season 106` for the 2022 World Cup.
+
+## Example: automated match report
+
+One command produces a one-page A4 report (PDF and PNG) for any match:
+
+![Euro 2024 final match report](docs/example_report_euro2024_final.png)
+
+[PDF version](docs/example_report_euro2024_final.pdf)
+
+**What's on the page**
+- **Key stats:** xG, shots, shots on target, possession, passing accuracy, progressive passes, field tilt and PPDA
+- **Shot map:** every shot, sized by xG, with goals filled in
+- **xG timeline:** cumulative xG for both teams, with goals marked
+- **Pass networks:** average positions and passing links for each team, using the longest spell without a substitution or red card, so an early injury doesn't leave only a few minutes of data
+- Scorers include penalties and own goals; extra time is handled
 
 ## Data model
 
@@ -65,15 +85,19 @@ WHERE match_date = (SELECT MAX(match_date) FROM matches);
 - **xG (expected goals):** StatsBomb's estimate of the probability that a shot is scored.
 - **Progressive pass:** a completed pass, starting outside the team's own defensive third, that moves the ball at least 25% closer to the opponent's goal line.
 - **Field tilt:** a team's share of the completed final-third passes in a match, used as a measure of territorial dominance.
+- **Possession (report):** a team's share of the match's passes. This is a common proxy; StatsBomb doesn't publish a possession percentage.
+- **PPDA (passes per defensive action):** opponent passes in their own 60% of the pitch, divided by the team's tackles, interceptions and fouls in that zone. Lower means more intense pressing.
 
 ## Project structure
 
 ```
 statsbomb-match-toolkit/
-├── src/pipeline.py      # ingestion, cleaning, checks, load
+├── src/
+│   ├── pipeline.py      # ingestion, cleaning, checks, load
+│   └── match_report.py  # one-page match reports
 ├── sql/views.sql        # analysis views
 ├── notebooks/           # exploration and team profiles
-├── docs/                # write-ups and example reports
+├── docs/                # example report and write-ups
 ├── data/                # created by the pipeline, not committed
 ├── requirements.txt
 └── README.md

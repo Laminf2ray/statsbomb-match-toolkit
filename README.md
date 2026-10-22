@@ -16,7 +16,7 @@ A reproducible Python and SQL pipeline for football event data, with automated m
 ## Quick start
 
 ```bash
-git clone https://github.com/<your-username>/statsbomb-match-toolkit.git
+git clone https://github.com/Laminf2ray/statsbomb-match-toolkit.git
 cd statsbomb-match-toolkit
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate

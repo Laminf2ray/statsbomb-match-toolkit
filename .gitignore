@@ -1,0 +1,12 @@
+# Data is downloaded by the pipeline, so it isn't committed
+data/
+*.duckdb
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# Generated outputs (keep a few examples in docs/ instead)
+outputs/

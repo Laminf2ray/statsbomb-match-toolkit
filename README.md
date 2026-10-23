@@ -10,7 +10,7 @@ A reproducible Python and SQL pipeline for football event data, with automated m
 |---|---|---|
 | 1. Pipeline: download, clean and load event data into DuckDB, then check it | ✅ Done | `data/football.duckdb` |
 | 2. Automated post-match report: shot map, xG timeline, pass networks, key stats | ✅ Done | `outputs/reports/` |
-| 3. Team style profiles: pressing, possession, chance quality | ⏳ Planned | `notebooks/` |
+| 3. Team style profiles: pressing, possession, chance quality for all 24 teams | ✅ Done | `outputs/profiles/`, [write-up](docs/team_styles.md) |
 | 4. Ad-hoc analysis questions, written up | ⏳ Planned | `docs/` |
 
 ## Quick start
@@ -29,6 +29,8 @@ python src/match_report.py --list            # match IDs
 python src/match_report.py                   # report for the most recent match (the final)
 python src/match_report.py --match 3943043   # a specific match
 python src/match_report.py --all             # all 51 matches, about 1.5 minutes
+
+python src/team_profiles.py                  # style maps + a profile page per team
 ```
 
 Downloads are cached in `data/raw/`, so later runs take seconds. To load another competition, find its IDs with `statsbombpy.sb.competitions()` and pass them in, for example `--competition 43 --season 106` for the 2022 World Cup.
@@ -47,6 +49,17 @@ One command produces a one-page A4 report (PDF and PNG) for any match:
 - **xG timeline:** cumulative xG for both teams, with goals marked
 - **Pass networks:** average positions and passing links for each team, using the longest spell without a substitution or red card, so an early injury doesn't leave only a few minutes of data
 - Scorers include penalties and own goals; extra time is handled
+
+## Example: team style profiles
+
+`src/team_profiles.py` compares all 24 teams on 10 metrics (per 90 minutes) and places each one on two maps. [Read the write-up](docs/team_styles.md).
+
+![Possession vs pressing map](docs/team_styles/style_map.png)
+
+**Findings**
+- Possession and pressing went together (correlation −0.72 between possession and PPDA).
+- Spain, Portugal and Germany all combined possession, pressing and few chances conceded; Spain also led for high regains and won all 7 matches.
+- England reached the final with the 19th-highest chance creation of 24 teams, built on a strong defence.
 
 ## Data model
 
@@ -94,7 +107,8 @@ WHERE match_date = (SELECT MAX(match_date) FROM matches);
 statsbomb-match-toolkit/
 ├── src/
 │   ├── pipeline.py      # ingestion, cleaning, checks, load
-│   └── match_report.py  # one-page match reports
+│   ├── match_report.py  # one-page match reports
+│   └── team_profiles.py # team style maps and profiles
 ├── sql/views.sql        # analysis views
 ├── notebooks/           # exploration and team profiles
 ├── docs/                # example report and write-ups

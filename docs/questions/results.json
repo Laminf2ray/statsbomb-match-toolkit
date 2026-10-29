@@ -1,0 +1,360 @@
+{
+  "q1_pressing_by_minute": {
+    "PPDA": {
+      "0\u201315": {
+        "estimate": 22.13,
+        "low": 19.78,
+        "high": 25.13
+      },
+      "15\u201330": {
+        "estimate": 22.7,
+        "low": 20.14,
+        "high": 25.69
+      },
+      "30\u201345+": {
+        "estimate": 18.93,
+        "low": 16.72,
+        "high": 21.59
+      },
+      "45\u201360": {
+        "estimate": 20.16,
+        "low": 17.58,
+        "high": 23.26
+      },
+      "60\u201375": {
+        "estimate": 16.16,
+        "low": 14.28,
+        "high": 18.55
+      },
+      "75\u201390+": {
+        "estimate": 15.62,
+        "low": 14.23,
+        "high": 17.23
+      }
+    },
+    "PPDA without fouls": {
+      "0\u201315": {
+        "estimate": 40.99,
+        "low": 35.61,
+        "high": 48.07
+      },
+      "15\u201330": {
+        "estimate": 45.06,
+        "low": 38.58,
+        "high": 52.41
+      },
+      "30\u201345+": {
+        "estimate": 40.5,
+        "low": 33.64,
+        "high": 50.43
+      },
+      "45\u201360": {
+        "estimate": 40.62,
+        "low": 33.98,
+        "high": 49.53
+      },
+      "60\u201375": {
+        "estimate": 31.18,
+        "low": 26.27,
+        "high": 37.63
+      },
+      "75\u201390+": {
+        "estimate": 36.07,
+        "low": 31.39,
+        "high": 42.24
+      }
+    },
+    "High pressures per 15 min": {
+      "0\u201315": {
+        "estimate": 12.22,
+        "low": 11.1,
+        "high": 13.35
+      },
+      "15\u201330": {
+        "estimate": 10.01,
+        "low": 9.03,
+        "high": 10.99
+      },
+      "30\u201345+": {
+        "estimate": 8.81,
+        "low": 7.93,
+        "high": 9.66
+      },
+      "45\u201360": {
+        "estimate": 10.39,
+        "low": 9.34,
+        "high": 11.44
+      },
+      "60\u201375": {
+        "estimate": 9.35,
+        "low": 8.3,
+        "high": 10.47
+      },
+      "75\u201390+": {
+        "estimate": 8.33,
+        "low": 7.59,
+        "high": 9.13
+      }
+    },
+    "Opponent build-up passes per 15 min": {
+      "0\u201315": {
+        "estimate": 65.51,
+        "low": 62.24,
+        "high": 69.13
+      },
+      "15\u201330": {
+        "estimate": 57.87,
+        "low": 55.1,
+        "high": 60.74
+      },
+      "30\u201345+": {
+        "estimate": 52.88,
+        "low": 49.63,
+        "high": 56.22
+      },
+      "45\u201360": {
+        "estimate": 54.16,
+        "low": 50.71,
+        "high": 57.96
+      },
+      "60\u201375": {
+        "estimate": 47.99,
+        "low": 44.57,
+        "high": 51.38
+      },
+      "75\u201390+": {
+        "estimate": 43.26,
+        "low": 40.6,
+        "high": 46.16
+      }
+    },
+    "Fouls per 15 min": {
+      "0\u201315": {
+        "estimate": 1.85,
+        "low": 1.6,
+        "high": 2.12
+      },
+      "15\u201330": {
+        "estimate": 1.75,
+        "low": 1.48,
+        "high": 2.01
+      },
+      "30\u201345+": {
+        "estimate": 2.04,
+        "low": 1.8,
+        "high": 2.28
+      },
+      "45\u201360": {
+        "estimate": 1.89,
+        "low": 1.68,
+        "high": 2.13
+      },
+      "60\u201375": {
+        "estimate": 1.94,
+        "low": 1.69,
+        "high": 2.19
+      },
+      "75\u201390+": {
+        "estimate": 2.04,
+        "low": 1.83,
+        "high": 2.28
+      }
+    },
+    "change_last15_vs_first15_pct": {
+      "PPDA": {
+        "estimate": -29.4,
+        "low": -39.6,
+        "high": -18.7
+      },
+      "PPDA without fouls": {
+        "estimate": -12.0,
+        "low": -28.2,
+        "high": 6.6
+      },
+      "High pressures per 15 min": {
+        "estimate": -31.8,
+        "low": -39.6,
+        "high": -22.4
+      },
+      "Opponent build-up passes per 15 min": {
+        "estimate": -34.0,
+        "low": -39.4,
+        "high": -28.0
+      },
+      "Fouls per 15 min": {
+        "estimate": 10.2,
+        "low": -4.8,
+        "high": 31.0
+      }
+    }
+  },
+  "q2_game_state": {
+    "Possession": {
+      "Trailing": {
+        "estimate": 53.861,
+        "low": 49.352,
+        "high": 58.337
+      },
+      "Level": {
+        "estimate": 50.0,
+        "low": 50.0,
+        "high": 50.0
+      },
+      "Leading": {
+        "estimate": 46.139,
+        "low": 41.663,
+        "high": 50.648
+      }
+    },
+    "PPDA": {
+      "Trailing": {
+        "estimate": 16.323,
+        "low": 14.314,
+        "high": 18.617
+      },
+      "Level": {
+        "estimate": 21.05,
+        "low": 19.089,
+        "high": 23.137
+      },
+      "Leading": {
+        "estimate": 18.107,
+        "low": 16.036,
+        "high": 20.497
+      }
+    },
+    "Shots per 90": {
+      "Trailing": {
+        "estimate": 13.228,
+        "low": 11.213,
+        "high": 15.403
+      },
+      "Level": {
+        "estimate": 11.208,
+        "low": 10.385,
+        "high": 12.13
+      },
+      "Leading": {
+        "estimate": 10.235,
+        "low": 8.245,
+        "high": 12.326
+      }
+    },
+    "npxG per 90": {
+      "Trailing": {
+        "estimate": 1.162,
+        "low": 0.916,
+        "high": 1.405
+      },
+      "Level": {
+        "estimate": 0.894,
+        "low": 0.798,
+        "high": 1.011
+      },
+      "Leading": {
+        "estimate": 0.983,
+        "low": 0.739,
+        "high": 1.232
+      }
+    },
+    "minutes_by_state": {
+      "Leading": 1218,
+      "Level": 2686,
+      "Trailing": 1218
+    },
+    "trailing_minus_leading": {
+      "Possession": {
+        "estimate": 7.722,
+        "low": -1.296,
+        "high": 16.675
+      },
+      "PPDA": {
+        "estimate": -1.784,
+        "low": -5.207,
+        "high": 1.843
+      },
+      "Shots per 90": {
+        "estimate": 2.993,
+        "low": -0.64,
+        "high": 6.475
+      },
+      "npxG per 90": {
+        "estimate": 0.178,
+        "low": -0.227,
+        "high": 0.586
+      }
+    }
+  },
+  "q3_possession_start": {
+    "npxG per possession": {
+      "Own third": {
+        "estimate": 0.0125,
+        "low": 0.0102,
+        "high": 0.015
+      },
+      "Middle third": {
+        "estimate": 0.0154,
+        "low": 0.0118,
+        "high": 0.0196
+      },
+      "Final third": {
+        "estimate": 0.0251,
+        "low": 0.015,
+        "high": 0.0386
+      }
+    },
+    "Possessions ending in a shot": {
+      "Own third": {
+        "estimate": 12.3929,
+        "low": 10.7206,
+        "high": 14.0725
+      },
+      "Middle third": {
+        "estimate": 15.9966,
+        "low": 13.7587,
+        "high": 18.3187
+      },
+      "Final third": {
+        "estimate": 26.9006,
+        "low": 20.7547,
+        "high": 32.9547
+      }
+    },
+    "npxG per shot": {
+      "Own third": {
+        "estimate": 0.0928,
+        "low": 0.0812,
+        "high": 0.1059
+      },
+      "Middle third": {
+        "estimate": 0.0886,
+        "low": 0.0732,
+        "high": 0.1056
+      },
+      "Final third": {
+        "estimate": 0.0809,
+        "low": 0.0536,
+        "high": 0.111
+      }
+    },
+    "final_vs_own_third_npxg_ratio": {
+      "estimate": 2.01,
+      "low": 1.17,
+      "high": 3.32
+    },
+    "counts": {
+      "Own third": {
+        "possessions": 1751,
+        "shots": 235
+      },
+      "Middle third": {
+        "possessions": 1169,
+        "shots": 203
+      },
+      "Final third": {
+        "possessions": 171,
+        "shots": 53
+      }
+    }
+  }
+}

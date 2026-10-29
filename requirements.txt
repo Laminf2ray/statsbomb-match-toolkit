@@ -5,3 +5,4 @@ duckdb>=1.0
 mplsoccer>=1.2
 matplotlib>=3.8
 adjustText>=1.0
+numpy>=1.26

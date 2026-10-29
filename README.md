@@ -11,7 +11,7 @@ A reproducible Python and SQL pipeline for football event data, with automated m
 | 1. Pipeline: download, clean and load event data into DuckDB, then check it | ✅ Done | `data/football.duckdb` |
 | 2. Automated post-match report: shot map, xG timeline, pass networks, key stats | ✅ Done | `outputs/reports/` |
 | 3. Team style profiles: pressing, possession, chance quality for all 24 teams | ✅ Done | `outputs/profiles/`, [write-up](docs/team_styles.md) |
-| 4. Ad-hoc analysis questions, written up | ⏳ Planned | `docs/` |
+| 4. Three analysis questions with confidence intervals, written up | ✅ Done | `outputs/questions/`, [write-up](docs/questions.md) |
 
 ## Quick start
 
@@ -31,6 +31,7 @@ python src/match_report.py --match 3943043   # a specific match
 python src/match_report.py --all             # all 51 matches, about 1.5 minutes
 
 python src/team_profiles.py                  # style maps + a profile page per team
+python src/questions.py                      # three analysis questions, with charts and results.json
 ```
 
 Downloads are cached in `data/raw/`, so later runs take seconds. To load another competition, find its IDs with `statsbombpy.sb.competitions()` and pass them in, for example `--competition 43 --season 106` for the 2022 World Cup.
@@ -60,6 +61,18 @@ One command produces a one-page A4 report (PDF and PNG) for any match:
 - Possession and pressing went together (correlation −0.72 between possession and PPDA).
 - Spain, Portugal and Germany all combined possession, pressing and few chances conceded; Spain also led for high regains and won all 7 matches.
 - England reached the final with the 19th-highest chance creation of 24 teams, built on a strong defence.
+
+## Example: analysis questions
+
+`src/questions.py` answers three questions with 95% confidence intervals from a bootstrap that resamples whole matches. [Read the write-up](docs/questions.md).
+
+| Question | Answer |
+| --- | --- |
+| Does pressing fade as matches go on? | Yes: 32% fewer pressures in the opponent's half in the last 15 minutes (95% CI 22–40%). PPDA hides this, because opponents also make fewer build-up passes. |
+| Does the scoreline change how teams play? | Trailing teams had 8 points more possession and 3 more shots per 90, but both intervals include zero in 51 matches. |
+| Do high regains lead to better chances? | More chances, not better ones: 2.0× the npxG per possession (95% CI 1.2–3.3×), from more shots of similar quality. |
+
+![Pressing by match minute](docs/questions/q1_pressing_by_minute.png)
 
 ## Data model
 
@@ -108,9 +121,9 @@ statsbomb-match-toolkit/
 ├── src/
 │   ├── pipeline.py      # ingestion, cleaning, checks, load
 │   ├── match_report.py  # one-page match reports
-│   └── team_profiles.py # team style maps and profiles
+│   ├── team_profiles.py # team style maps and profiles
+│   └── questions.py     # three analysis questions with confidence intervals
 ├── sql/views.sql        # analysis views
-├── notebooks/           # exploration and team profiles
 ├── docs/                # example report and write-ups
 ├── data/                # created by the pipeline, not committed
 ├── requirements.txt
